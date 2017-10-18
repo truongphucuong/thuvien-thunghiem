@@ -1,0 +1,17 @@
+bài viết xuất phát từ một comment "6" tại: https://stackoverflow.com/questions/8830599/php-convert-xml-to-json
+//-----------------------------------------------------------------------------------
+        $xml = ... // Xml file data
+
+        // first approach
+        $Json = json_encode(simplexml_load_string($xml));
+
+        ---------------- OR -----------------------
+
+        // second approach
+        $Json = json_encode(simplexml_load_string($xml, "SimpleXMLElement", LIBXML_NOCDATA));
+        echo $Json;
+//-----------------------------------------------------------------------------------
+sau đó, truy cập vào đường link trong comment: https://github.com/rentpost/xml2array
+Tại phần đọc thêm trong bài viết trên GitHub là Thư-Viện của XML2Array và Array2XML.
+//-----------------------------------------------------------------------------------
+Cài đặt Composer chứa 2 thư viện trên:

@@ -1,0 +1,37 @@
+<learn>
+Tìm hiểu về XML
+	1./ cú pháp:
+		<root> 
+			<child>
+				<subchild>.....</subchild>
+			</child>
+		</root>
+	2./ ghi chú:
+		<!-- comment 
+	
+	3./ thẻ XML:
+		a./ có phân biệt chữ HOA và chữ thường
+		b./ tất cả thẻ XML có chứa nội dung nhất định phải có thẻ đóng lại
+			ví dụ: 
+				trường hợp ĐÚNG:
+					<p> this is paragraph </p>
+					<br />
+				trường hợp SAI:
+					<p> this is paragraph
+					<br>
+		c./ nhất định phải có thẻ <root> </root> 
+		d./ attribute phải được đặt trong cập nháy đơn hoặc nháy đôi
+			chú ý: nháy đơn có thể chứa cả nháy đôi bên trong.
+			ví dụ:
+				<gangster name='George "Shotgun" Ziegler'> </gangster>
+				<gangster name="George &quot;Shotgun&quot; Ziegler"></gangster>
+		e./ CSS: giống như HTML
+			ví dụ:
+				<?xml-stylesheet type="text/css" href="myStyle.css"?>
+			myStyle.css:
+				tên-thẻ {
+					background-color: #ffffff;
+					width: 100%;
+				}		
+		-->				
+</learn>

@@ -1,0 +1,232 @@
+||--------------------------||
+||** Ghi chú buổi báo cáo **||
+||--------------------------||
+	+ tạo một file XML lưu dữ liệu Config dạng JSon...
+		thứ-1 : khi muốn chỉnh sửa về cấu hình chỉ cần sửa trên file XML rồi đưa nó vào CSDL
+		thứ-2 : Xuất dữ liệu Config trong Form nhập ra một FILE dạng Json.		
+		thứ-3 : thêm sản phẩm khác.
+		thứ-4 : đưa dữ liệu get về vào csdl.
+		...
+	+ Viết tài liệu hướng dẫn sử dụng chức năng GET-LINK
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||	
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+||--------------------------||
+||**CẦN phải cải thiện lại**||
+||--------------------------||
+	+ Retailer và Categories:
+	
+		- thêm một tùy chọn cho người dùng chọn lựa cách thêm CUNG CẤP
+			1. thêm từ Nhà Cung Cấp có sẵn: nghĩa là dạng DropDown hiện tại
+			2. thêm mới: nhập từ bàn phìm
+			=> thêm một phương thức kiểm check để thực hiện công việc này
+				Nếu, check vào [*]
+						
+[NOTE]	- Nhưng hiện tại đang làm việc với Retailer_id & Category_id 
+			vì thế việc nhập mới Retailer_name hay Category_name thì không xác định được ID của 2 trường đó 
+			bắt buộc phải nhập mới Retailer_name và Category_name vào CSDL để nhận được một ID
+
+[NOTE]	- tìm cách cải thiện điểm này lại. 
+
+		
+	+ [ERROR]: đã tìm ra được điểm gây ra lỗi _Undefined index_ => tag_product_name_att.
+		- lỗi do: ID=2, ID=4 lúc đầu chưa có thêm 2 trường name_att và price_att.
+		
+		
+	+ Về việc kiểm tra lại các tag_name - tag_price - attribute:
+		- xác thực lại thông tin nhập vào form
+			- sẽ có các trường hợp SAI sau:
+				- Tên thẻ-html sai
+				- thiếu/ hoặc thừa Attribute của thẻ-html.
+			
+	+ [ERROR]: Lỗi ở trang Thegioiso
+		- không lưu lại dấu check ở pageIndex.
+		
+	
+	
+||------------------------------||		
+|| *vấn đề CHƯA GIẢI QUYẾT ĐƯỢC*||
+||------------------------------||
+	
+	0.1 CRONJOP là gì ??? 
+		=> quan trọng nhưng chưa hiểu
+	
+	
+	0. 	Lấy hình , lấy link bán sản phẩm [NOTE] - đã thực hiện.
+		Cấu hình của sản phẩm (CÓ CẦN THIẾT PHẢI CÓ HAY KHÔNG).
+	
+
+	1. TRANG nguyenkim.com
+		khi lấy TITLE (tên) sản phẩm, gặp một vấn đề về thuộc tính title trong các thẻ html.
+		=> đang tìm HƯỚNG GIẢI QUYẾT.
+	
+	2. TRANG fptshop.vn	
+		2.1 các sản phẩm được phân trang một cách lạ lùng. 
+		=> đang tìm hiểu cách lấy.		
+			Giải pháp 1: 
+				truy cập vào từng thương hiệu get-tất-cả-sản-phẩm của một thương hiệu			
+			Giải pháp 2:
+				truy cập vào từng phân trang của từng PHÂN LOẠI ĐT
+				=> tức là,
+					A./ thêm vào Form 1 trường để chứa các đường dẫn đến (XEM THÊM của trang FPT) 
+						và tất nhiên điều này là không bất buộc đối với các WEBSITE khác.		
+					B./ song song đó, thêm các hàm xử lí vấn đề [A]
+						i./ 	trường URL có thể chứa là MẢNG không ?
+						ii./ 	trường URL_PHÂN TRANG có thể chứa là MẢNG không ?
+[NOTE]	đã fix 2.1
+		=>	Đã được giải quyết bằng một cách khác [NPT].						
+		
+		
+		2.2 + trong tag chứa giá , chứa luôn giá cũ => loại bỏ giá cũ
+			+ giá chứa \n ,\t , \r 
+[NOTE]  đã FIX 2.2
+ 		
+		
+	
+[báo cáo với thầy]
+	3.1 Trang thegioiso:
+		http://thegioiso.vn/dien-thoai-472.html&page=3
+		=> sai cấu truc URL chỗ &page=3.		
+		nên khi truy cặp theo cú pháp sau đây : http://thegioiso.vn/dien-thoai-472.html?page=3
+		nó sẽ trả về trang bán điện thoại di động mà không phải page thứ 3 của nó.
+		
+	3.2 Trang NguyenKim.com:
+	
+	4. Get.php
+		thêm bước kiểm tra chỗ lấy hình ảnh, khi có một số ảnh không nằm trong src của trang thegioididong.com
+[NOTE]		=> đã FIX.
+	
+GetLinkController	
+	/*
+		| 
+		| kiểm tra lại trạng thái GET dữ liệu
+		| khi $get->checkStatus == false thì quay lại trang hiện tại và thông báo lỗi.
+		| 
+		| * [xảy ra PROBLEM-1]: không kiểm tra trạng thái DỮ LIỆU LẤY VỀ hoặc là kiểm tra _/SAI/_.	
+		|
+		| * [fix PROBLEM-1]: NẾU dữ liệu get về là NULL thì THÔNG BÁO LỖI và quay lại trang edit
+		| 	xem tại {check_data}
+	*/	
+		
+||--------------------------||
+|| thêm product vào CSDL	||
+||--------------------------||
+	trong bảng Pruduct: thiếu cột product_price: đã thêm.
+[NOTE]		Nhưng trong csdl liệu cũ, thì Price được lưu trong một bảng riêng biệt.
+	
+	Hoạt động của chức năng thêm product:
+		1./ PageController.php/product
+		2./ các bảng liên quan: Products, Prices, Retailers, Categories, ...
+		
+	Những việc cần thực hiện:
+		1./ Gôm nhóm các sản phẩm CÙNG Pruduct_name: thêm các nhóm vào CSDL
+			a./ Lọc tên nhóm product lại, loại bỏ các từ ngữ dư thừa trong đó. (setItemProduct())
+				-- 	Đã làm:
+					++	thêm phần xử lý Name_group trong function setItemProduct()
+					
+			b./ gôm tên của sản phẩm lấy được  (SaveController)
+				--	Đã Làm:
+					++ 	khởi tạo biến: $name_group = []; , để lưu tên nhóm product
+					++	thêm 1 function getNameGroup() trong class Get: để phục vụ cho Group của Product.
+					++	
+			c./ thêm tên nhóm vào CSDL (SaveController.php)
+			
+		2./ Thêm sản phẩm lấy được vào CSDL
+			2.1/ lấy url - name- price - image của sản phẩm để hỗ trợ công việc thêm mới sản phẩm
+[NOTE]		=> xong
+
+			2.2.1/ GetBrand: thêm brand vào csdl
+[NOTE]		=> kiểm tra lại
+				#CODE:
+				$cate_id = $category_id; 
+				$brand = Brand::where('brand_name','LIKE',$result)->where('category_id',$cate_id)->first();
+				$brandnew = null;
+				if(!isset($brand))
+				{
+					$brandnew = new Brand();
+					$brandnew->brand_name=$result;
+					$brandnew->brand_unsignedname = changeTitle($brandnew->brand_name);
+					$brandnew->category_id=$i+1;
+					$brandnew->save();
+					echo $brandnew->brand_name.'<br>'.'<hr>';					
+				}
+			2.3.1/ gán giá trị retailer_id cho sản phẩm: 
+[NOTE]		=> kiểm tra lại
+				
+		3./ Cronjob:
+			a./ thêm Cronjob vào #admin\layout\menu.blade.php
+				tên Route #admin.Cronjob.cronjob: chưa định nghĩa
+[NOTE]			=> [OK]	
+
+			b./ thêm route_group #Conjob vào route.php
+				chưa định nghĩa trong SaveController
+[NOTE]			=> [OK]			
+
+			c./ đinh nghĩa Cronjob trong SaveController
+[NOTE]			=> [OK]
+			
+			d./ Đã tạo Model & Migrate Table#Cronjob 
+[NOTE]			=> [OK]
+			
+		4./ nghiên cứu Cronjob của #PHÚC
+			a./ Các file liên quan:
+				++	route.php:
+					--	tạo route_group: Cronjob
+					//
+					--	View\admin\layout\menu.blade.php	
+					//	=>	sử dụng SaveControlle@postCronjob
+					//
+					--	View\admin\Cronjob\cronjob.blade.php		
+					//	=>	sử dụng SaveControlle@Cronjob
+					//	
+					--	sử dụng SaveControlle@getCronjob
+					//
+					--	
+				++	SaveController	
+					++	CRONJOP
+						--	SaveData
+							--	sử dụng route để gọi đến hàm này
+						--	SaveLocationData
+						--	Cronjob
+						--	getCronjob
+						--	postCronjob	
+				++	Lib\Getlink.php
+				
+				++	View\admin\Cronjob\cronjob.blade.php
+					--	gọi đến route:	{!! route('admin.cronjob.cron') !!}
+					-- [OK]
+				||	
+				++ 	View\admin\layout\menu.blade.php
+					--	gọi đến route:	{!! route('admin.cronjob') !!}
+					-- [OK]
+		
+		5./ Tìm kiếm sản phẩm:
+			a./ Kết quả tìm kiếm theo cụm từ (nếu nhập đúng tên đầy đủ), theo mỗi từ/cụm từ (nếu nhập Sai/Thừa/Thiếu tên đầy đủ của sản phẩm)
+			b./ không phân biệt chữ HOA chữ thường.
+		
+		6./ Design thêm cho các FORM có bộ lọc 24 chữ cái.
+			Design lại tên Menu trang admin thành tiếng Việt
+			Design lại các đường dẫn của trang admin.
+			edit chức năng settings trang admin.
+			Design bỏ đi dòng #Dashboard trên menu trang admin
+			Design mẫu hiển thị chung cho các list: category, retailer, brand....
+
+||----------------||
+||Báo cáo với thầy||
+||----------------||		
+	CSDL cũ: 
+	trong bảng Product không có cột Category_id.
+	
+	
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		

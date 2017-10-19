@@ -1,0 +1,47 @@
+||----------------------------------------------------------------------------------------------------||
+|| Các vấn đề khi ghi các template vào file.xml
+||----------------------------------------------------------------------------------------------------||
+KHI THÊM MỘT TEMPLATE MỚI:
+1./ nhập dữ liệu từ form, kiểm tra độ chính xác của template trên form
+2./ Nếu form xác nhận [thành công] sau đó ghi dữ liệu vào CSDL & ghi vào XML.
+  2.1/ dữ liệu được ghi vào XML bao gồm:
+      id: mỗi template sẽ có một id cho riêng mình. [mấu chốt để xác định cần template của ai]
+      Retailer: retailer_name HOẶC retailer_id của bảng get_links
+      Category: tương tự Retailer.
+      cột config: nó được mã hõa thành json để lưu trữ vì vậy giải mã nó ra để có thể thêm vào XML
+
+KHI SỬA MỘT TEMPLATE:
+CÁCH 1: sửa trực tiếp trên Form , Form sẽ kiểm tra độ [chính xác] , sau đó lấy dữ liệu đó ghi vào XML.
+CÁCH 2: sửa trên file XML , bằng cách truyền vào lại Form để kiểm tra độ [chính xác] của nó.
+
+KHI XÓA MỘT TEMPLATE:
+CÁCH 1: chỉ cần nhấn vào nút Delete trên Form , ngay lập tức template đó sẽ bị xóa đi.
+CÁCH 2: để xóa một template ta cần thực hiện quét dữ liệu trên diện rộng nếu dữ liệu đó lớn.
+    giải pháp: xác định id của template cần xóa và truyền nó vào hàm Delete (chưa được định nghĩa).
+              
+
+||----------------------------------------------------------------------------------------------------||
+|| Các bước thực hiện để ghi các template vào file.xml
+||----------------------------------------------------------------------------------------------------||
+1./ xác định các nút (node):
+  đối với Form_data: thì Key là nút, value là nội dung.
+  đối với các trường khác: thì đó là tên biến và nội dung là dữ liệu được nhập vào từ bàn phím.
+2./ 
+
+CHÚ Ý: json_encode không xác định được kiểu UTF-8.  
+
+NHƯỢC ĐIỂM CỦA XML:
+1./ kiểm tra độ chính xác các keywork [KHÓ KHĂN]
+2./ thiếu trực quan.
+3./ so với lưu trên CSDL thì lưu template vào XML [KHÓ QUẢN LÍ]
+
+
+
+
+
+
+
+
+
+
+

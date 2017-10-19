@@ -15,3 +15,16 @@ sau đó, truy cập vào đường link trong comment: https://github.com/rentp
 Tại phần đọc thêm trong bài viết trên GitHub là Thư-Viện của XML2Array và Array2XML.
 //-----------------------------------------------------------------------------------
 Cài đặt Composer chứa 2 thư viện trên:
+[ERROR]: sử dụng command sau nhưng báo lỗi
+        composer require rentpost/xml2array
+        
+quay trở lại giải pháp: copy code và khởi tạo class xml2array trong App\Lib để sử dụng
+Các vấn đề xảy ra liên quan:
+        1./ [ERROR]  Class 'App\Lib\DomDocument' not found
+                thêm \DomDocument trực tiếp trong function gọi đến nó
+                OR
+                thêm lệnh: use \DomDocument;
+||*********************************************************************************||
+||Đã tìm được giải pháp Giải quyết được việt GHI/ĐỌC file *.xml                    ||       
+||tại đây: http://www.code30s.com/m/bai-21-doc-va-ghi-file-xml-bang-php-131        ||       
+||*********************************************************************************||

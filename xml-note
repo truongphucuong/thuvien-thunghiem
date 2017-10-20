@@ -35,6 +35,21 @@ NHƯỢC ĐIỂM CỦA XML:
 2./ thiếu trực quan.
 3./ so với lưu trên CSDL thì lưu template vào XML [KHÓ QUẢN LÍ]
 
+||----------------------------------------------------------------------------------------------------||
+||    kịch bản cần xây dựng               ------------------------------------------------------------||
+||----------------------------------------------------------------------------------------------------||
+KỊCH BẢN 1: lưu từng template trong từng file.xml.
+    1./ File XML: được nhập thủ công vào file xml luôn.
+    sau đó truyền file đó vào chương trình, Convert thành Array và chạy chương trình đó để thực hiện GETLINK.    
+KỊCH BẢN 2: lưu tất cả template trong 1 file.xml
+    1./ File XML: được nhập thủ công vào file xml luôn.
+    với việc nhiều template cùng nằm trong một file, thì dùng explode để tách ra thành từng phần tử mảng lưu từng template
+    kết hợp preg_match() tìm kiếm ID của từng template làm điều kiện tiên quyết để gọi đến một template.
+    
+KỊCH BẢN 3: tương tự như 1 kịch bản trên nhưng 
+    1./ File XML: được nhập từ Form.
+KỊCH BẢN 4: tương tự như 2 kịch bản trên nhưng 
+    1./ File XML: được nhập từ Form.
 
 
 

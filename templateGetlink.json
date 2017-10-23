@@ -1,0 +1,27 @@
+{
+	"root": {
+		"host": "www.dienmayxanh.com",
+		"url": "https://www.dienmayxanh.com/dien-thoai",
+		"keyword_common": "div id=\"product-list\"",
+		"tag_item": "li",
+		"tag_product_name": "h3",
+		"tag_product_name_att": "",
+		"tag_product_price": "strong",
+		"tag_product_price_att": "",
+		"tag_product_image": "img",
+		"tag_product_url": "a",
+		"paginate_url": "https://www.dienmayxanh.com/aj/TeleCommunication/ProductBox",
+		"paginate_method": "POST",
+		"form_data": {
+			"catid": "42",
+			"catname": "Điện thoại",
+			"caturl": "dien-thoai",
+			"pagesize": "20",
+			"pageidx": "1",
+			"isFilter": "0",
+			"sortby": "3"
+		},
+		"paginate_index": "pageidx",
+		"paginate_result_finish": ""
+	}
+}

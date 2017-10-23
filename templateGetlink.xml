@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<getlink>
+	<template>
+		<host>www.thegioididong.com</host>
+		<url>https://www.thegioididong.com/dtdd</url>
+		<keyword_common>ul class="cate normal"</keyword_common>
+		<tag_item>li</tag_item>
+		<tag_product_name>h3</tag_product_name>
+		<tag_product_name_att></tag_product_name_att>
+		<tag_product_price>strong</tag_product_price>
+		<tag_product_price_att></tag_product_price_att>
+		<tag_product_image>img</tag_product_image>
+		<tag_product_url>a</tag_product_url>
+		<paginate_url>https://www.thegioididong.com/aj/CategoryV4/Product</paginate_url>
+		<paginate_method>POST</paginate_method>
+		<form_data>
+			<Category>42</Category>
+			<Manufacture>0</Manufacture>
+			<PriceRange></PriceRange>
+			<Feature></Feature>
+			<Property></Property>
+			<OrderBy></OrderBy>
+			<PageSize>30</PageSize>
+			<PageIndex>1</PageIndex>
+			<Others></Others>
+			<ClearCache>0</ClearCache>
+		</form_data>
+		<paginate_index>PageIndex</paginate_index>
+		<paginate_result_finish></paginate_result_finish>
+	</template >
+	
+	<template>
+		<host>www.dienmayxanh.com</host>
+		<url>https://www.dienmayxanh.com/dien-thoai</url>
+		<keyword_common>div id="product-list"</keyword_common>
+		<tag_item>li</tag_item>
+		<tag_product_name>h3</tag_product_name>
+		<tag_product_name_att></tag_product_name_att>
+		<tag_product_price>strong</tag_product_price>
+		<tag_product_price_att></tag_product_price_att>
+		<tag_product_image>img</tag_product_image>
+		<tag_product_url>a</tag_product_url>
+		<paginate_url>https://www.dienmayxanh.com/aj/TeleCommunication/ProductBox</paginate_url>
+		<paginate_method>POST</paginate_method>
+		<form_data>
+			<catid>42</catid>
+			<catname>Điện thoại</catname>
+			<caturl>dien-thoai</caturl>
+			<pagesize>20</pagesize>
+			<pageidx>1</pageidx>
+			<isFilter>0</isFilter>
+			<sortby>3</sortby>
+		</form_data>
+		<paginate_index>pageidx</paginate_index>
+		<paginate_result_finish></paginate_result_finish>
+	</template>
+</getlink>

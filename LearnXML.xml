@@ -1,15 +1,18 @@
 <learn>
 Tìm hiểu về XML
 	1./ cú pháp:
-		<root> 
-			<child>
-				<subchild>.....</subchild>
-			</child>
-		</root>
-	2./ ghi chú:
-		<!-- comment 
+		<!-- 
+			<root> 
+				<child>
+					<subchild>.....</subchild>
+				</child>
+			</root>
+		-->
+	2./ cú pháp ghi chú:
+		<!-- comment -->
 	
 	3./ thẻ XML:
+<!--
 		a./ có phân biệt chữ HOA và chữ thường
 		b./ tất cả thẻ XML có chứa nội dung nhất định phải có thẻ đóng lại
 			ví dụ: 
@@ -33,5 +36,28 @@ Tìm hiểu về XML
 					background-color: #ffffff;
 					width: 100%;
 				}		
-		-->				
+-->				
+
+
 </learn>
+
+chuyển đổi XML sang JSON:
+	tìm hiểu các hàm được sử dụng:
+		<!-- 	||$xml = simplexml_load_file("states.xml");--> simplexml_load_file(): là gì ?
+		<!-- 	||echo json_encode($xml); 
+		
+				||$xml = simplexml_load_string($xml_string);--> simplexml_load_string(): là gì ? 
+		<!--	||$json = json_encode($xml);
+				||$array = json_decode($json,TRUE);
+		--> 
+	Code thực hiện xml2json: 
+		<!-- https://stackoverflow.com/questions/8830599/php-convert-xml-to-json
+			$xml = simplexml_load_file("states.xml");
+			echo json_encode($xml);
+			foreach($xml->children() as $state)
+			{
+				$states[]= array('state' => (string)$state->name); 
+			}       
+			echo json_encode($states);
+		-->
+	code 	
